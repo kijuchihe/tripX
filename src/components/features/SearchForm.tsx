@@ -13,42 +13,49 @@ interface ISearchLocation {
   url: string
 }
 
-const SearchForm = () => {
+const SearchForm = ({
+  category,
+}: {
+  category: 'flights/searchAirport' | 'hotels/searchHotels'
+}) => {
   const [data, setData] = useState<ISearchLocation[]>([])
   const [query, setQuery] = useState<string>('')
   const navigate = useNavigate()
 
-  const useSearch = async (query: string) => {
-    // const [data, setData] = useState<any>(null);
-    const url = `https://weatherapi-com.p.rapidapi.com/search.json?q=${query}`
-    const options = {
-      method: 'GET',
-      headers: {
-        'x-rapidapi-key': import.meta.env.VITE_API_KEY as string,
-        'x-rapidapi-host': 'weatherapi-com.p.rapidapi.com',
-      },
-    }
+  //   const useSearch = async (query: string) => {
+  //     const url = `https://tripadvisor16.p.rapidapi.com/api/v1/${category}?query=${query}`
 
-    try {
-      const response = await fetch(url, options)
-      const result = await response.json()
-      setData(result)
-    } catch (error) {
-      console.error(error)
-    }
-    // Make API request with filtered query
+  //     const options = {
+  //       method: 'GET',
+  //       headers: {
+  //         'x-rapidapi-key': 'e6d19a3739msh53938220f885404p113e5ajsn11ed19d0cb54',
+  //         'x-rapidapi-host': 'tripadvisor16.p.rapidapi.com',
+  //       },
+  //     }
 
-    return data
-  }
+  //     try {
+  //       const response = await fetch(url, options)
+  //       const result = await response.json()
+  //       //   console.log(await JSON.parse(response))
+  //       //   const result = await response.json()
+  //       setData(result.data)
+  //       console.log(result.data)
+  //     } catch (error) {
+  //       console.error(error)
+  //     }
+  //     // Make API request with filtered query
+
+  //     return data
+  //   }
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value)
-    e.target.value.length > 1 ? useSearch(e.target.value) : setData([])
+    // e.target.value.length > 1 ? useSearch(e.target.value) : setData([])
   }
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setData([])
-    navigate(`/search?q=${query}`)
+    navigate(`/${category.split('search')[1].toLowerCase()}?q=${query}`)
     setQuery('')
   }
   return (
@@ -60,7 +67,7 @@ const SearchForm = () => {
       >
         <input
           type="text"
-          placeholder="Search a place"
+          placeholder={`Search ${category.split('search')[1].toLowerCase()}`}
           className="flex-1 bg-transparent border-none outline-none  placeholder:text-gray-700"
           value={query}
           onChange={handleChange}
@@ -76,18 +83,11 @@ const SearchForm = () => {
       >
         {data.length > 0 && (
           <div className="p-2 mt-2 bg-gray-200 rounded-xl dark:bg-gray-800">
-            {data?.map((city: any) => {
+            {data?.map((location: any) => {
               return (
-                <div
-                  className="p-2 my-1 rounded-xl cursor-pointer hover:bg-gray-300 dark:hover:bg-gray-900"
-                  onClick={() => {
-                    setQuery(`${city.name}, ${city.region}, ${city.country}`)
-                    setData([])
-                    navigate(`/search?lat=${city.lat}&lon=${city.lon}`)
-                  }}
-                  key={city.id}
-                >
-                  {city.name}, {city.region}, {city.country}
+                <div>
+                  {/* <img src={location?.image.photo.photoSizes[0].url} alt="" /> */}
+                  {location?.name}
                 </div>
               )
             })}

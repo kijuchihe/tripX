@@ -1,26 +1,26 @@
-import { useEffect, useState } from 'react';
-import { FiSun as SunIcon } from 'react-icons/fi';
-import { useLocalStorage } from 'usehooks-ts';
-import Switch from '../ui/Switch';
+import { useEffect, useState } from 'react'
+import { FiSun as SunIcon } from 'react-icons/fi'
+// import { useLocalStorage } from 'usehooks-ts';
+import Switch from '../ui/Switch'
 
 function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ');
+  return classes.filter(Boolean).join(' ')
 }
 
 function ThemeSwitch() {
-  const [theme, setTheme] = useLocalStorage('theme', 'dark');
+  const [theme, setTheme] = useLocalStorage('theme', 'dark')
 
   useEffect(() => {
-    document.body.classList.remove('light', 'dark');
-    document.body.classList.add(theme);
-  }, [theme]);
+    document.body.classList.remove('light', 'dark')
+    document.body.classList.add(theme)
+  }, [theme])
 
-  const [enabled, setEnabled] = useState(theme == 'dark');
+  const [enabled, setEnabled] = useState(theme == 'dark')
 
   const handleThemeChange = (enabled: boolean) => {
-    setTheme(enabled ? 'dark' : 'light');
-    setEnabled(enabled);
-  };
+    setTheme(enabled ? 'dark' : 'light')
+    setEnabled(enabled)
+  }
 
   return (
     <Switch
@@ -62,7 +62,7 @@ function ThemeSwitch() {
         </span>
       </span>
     </Switch>
-  );
+  )
 }
 
-export default ThemeSwitch;
+export default ThemeSwitch

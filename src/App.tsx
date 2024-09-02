@@ -3,17 +3,33 @@ import Layout from './components/layout'
 import { Tabs } from './components/ui/Tabs'
 
 const tabs = [
-  { header: 'Search All', content: 'Search All' },
-  { header: 'Hotels', content: 'Another All' },
-
-  { header: 'Bars', content: 'forreve All' },
+  {
+    header: 'Airports',
+    content: (
+      <>
+        <SearchForm category="flights/searchAirport" />
+      </>
+    ),
+  },
+  {
+    header: 'Hotels',
+    content: (
+      <>
+        <SearchForm category="hotels/searchHotels" />
+      </>
+    ),
+  },
+  { header: 'Restaurants', content: 'forreve All' },
+  { header: 'Vacation Rentals', content: 'forreve All' },
+  { header: 'Cruises', content: 'cruise' },
+  { header: 'Rental Cars', content: 'rent cars' },
 ]
 
 function App() {
   return (
     <Layout>
-      <SearchForm />
       <Tabs tabs={tabs} />
+      Restaurants
     </Layout>
   )
 }
