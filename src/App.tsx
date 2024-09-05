@@ -19,17 +19,37 @@ const tabs = [
       </>
     ),
   },
-  { header: 'Restaurants', content: 'forreve All' },
-  { header: 'Vacation Rentals', content: 'forreve All' },
-  { header: 'Cruises', content: 'cruise' },
-  { header: 'Rental Cars', content: 'rent cars' },
+  { 
+    header: 'Restaurants', content: (
+    <>
+      <SearchForm category="restaurants/searchRestaurants" />
+    </>
+  ),
+ },
+  { header: 'Vacation Rentals', content: (
+    <>
+      <SearchForm category="Rentals/searchVacation Rentals" />
+    </>
+  ),
+ },
+  { header: 'Cruises', content: (
+    <>
+      <SearchForm category="Cruises/searchCruises" />
+    </>
+  ),
+ },
+  { header: 'Rental Cars', content: (
+    <>
+      <SearchForm category="Rentalcars/searchRental Cars" />
+    </>
+  ),
+ },
 ]
 
 function App() {
   return (
     <Layout>
       <Tabs tabs={tabs} />
-      Restaurants
     </Layout>
   )
 }
