@@ -9,7 +9,7 @@ const HomePage = () => {
   return (
     <Layout>
       <Container isFirst>
-        <div className="flex flex-wrap min-h-[500px] justify-center items-center p-4 w-full rounded-xl md:justify-between bg-primary/30">
+        <div className="flex flex-wrap min-h-[500px] justify-center items-center p-4 w-full rounded-xl md:justify-between bg-primary/30 gap-2">
           <div className=" w-full md:w-[48%] flex flex-col items-center md:items-start gap-4">
             <small className="flex gap-2 items-center text-xs font-light">
               <span className="text-primary">Powered by AI</span>
@@ -47,13 +47,13 @@ const HomePage = () => {
               </a>
             </div>
           </div>
-          <div className="w-full md:w-[48%] ">
+          <div className="w-full md:w-[48%] flex items-center justify-center md:h-full">
             <img
               src="https://static.tacdn.com/img2/trips/home-gai-entry-v2-dv.png"
               width="100%"
               height="100%"
               alt=""
-              className="_C"
+              className="object-cover bg-primary"
             />
           </div>
           {/* <div className="xaFzM FjASD">
