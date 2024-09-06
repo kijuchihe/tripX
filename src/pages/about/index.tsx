@@ -10,7 +10,7 @@ const teamMembers = [
     role: 'CTO',
     image: '/kingsley.jpeg',
     workDone:
-      'I implemented the authentication logic, did the navbar, did the home page and also contributed to the about page.',
+      'He implemented the authentication logic, did the navbar, did the home page and also contributed to the about page.',
     twitter: 'https://x.com/kijuchihe',
     portfolio: '',
   },
@@ -36,6 +36,7 @@ const teamMembers = [
     name: 'Emmanuel',
     role: '',
     image: '/emma.jpeg',
+    workDone: '',
     twitter: '',
     portfolio: '',
   },
@@ -80,10 +81,7 @@ const AboutPage = () => {
               />
               <h3 className="text-xl font-bold">{member.name}</h3>
               <p className="mb-2 text-gray-600">{member.role}</p>
-              <p className="max-w-md text-gray-600">
-                He is the Designer behind TripX, bringing a wealth of experience
-                in travel planning and Front-end development.
-              </p>
+              <p className="max-w-md text-gray-600">{member.workDone}</p>
             </div>
           ))}
         </div>
