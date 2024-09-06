@@ -42,7 +42,7 @@ const Navbar = ({ isAuthenticated }: { isAuthenticated: boolean }) => {
         </nav>
 
         {!isAuthenticated ? (
-          <div className="flex gap-x-4 items-center text-primary">
+          <div className="hidden gap-x-4 items-center md:flex text-primary">
             <Link
               to="/login"
               className="px-4 py-2 text-white rounded bg-primary"
@@ -108,17 +108,19 @@ const Navbar = ({ isAuthenticated }: { isAuthenticated: boolean }) => {
                       </Link>
                     </li>
                   ))}
-                  {!isAuthenticated && (
-                    <div className="flex gap-x-4 items-center text-primary">
-                      <Link
-                        to="/login"
-                        className="px-4 py-2 text-white rounded bg-primary"
-                        role="button"
-                      >
-                        Login
-                      </Link>
-                    </div>
-                  )}
+                  <li>
+                    <button
+                      onClick={async () => {
+                        await signOut(auth)
+                        navigate('/login')
+                      }}
+                      type="button"
+                      className="px-4 py-2 text-white rounded bg-primary"
+                      role="button"
+                    >
+                      Logout
+                    </button>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -141,21 +143,6 @@ const Navbar = ({ isAuthenticated }: { isAuthenticated: boolean }) => {
             id="user-dropdown"
             // dark:bg-gray-700 dark:divide-gray-600
           >
-            <div className="px-4 py-3">
-              <span
-                className="block text-sm text-gray-900"
-                // dark:text-white
-              >
-                Bonnie Green
-              </span>
-              <span
-                className="block text-sm text-gray-500 truncate"
-                // dark:text-gray-400
-              >
-                name@flowbite.com
-              </span>
-            </div>
-            <div className="bg-gray-400 h-[2px] w-full"></div>
             <ul
               className="flex flex-col items-center py-2"
               aria-labelledby="user-menu-button"
@@ -171,19 +158,17 @@ const Navbar = ({ isAuthenticated }: { isAuthenticated: boolean }) => {
                   </Link>
                 </li>
               ))}
-              <li>
-                <button
-                  onClick={async () => {
-                    await signOut(auth)
-                    navigate('/login')
-                  }}
-                  type="button"
-                  className="px-4 py-2 text-white rounded bg-primary"
-                  role="button"
-                >
-                  Logout
-                </button>
-              </li>
+              {!isAuthenticated && (
+                <div className="flex gap-x-4 items-center text-primary">
+                  <Link
+                    to="/login"
+                    className="px-4 py-2 text-white rounded bg-primary"
+                    role="button"
+                  >
+                    Login
+                  </Link>
+                </div>
+              )}
             </ul>
           </div>
         </div>
