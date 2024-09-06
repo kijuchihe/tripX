@@ -14,6 +14,8 @@ import SearchPage from './pages/search/index.tsx'
 import LoginPage from './pages/(auth)/login/index.tsx'
 import { AuthProvider } from './context/authContext.tsx'
 import RegisterPage from './pages/(auth)/register/index.tsx'
+ import { ToastContainer } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 const ErrorBoundary = () => {
   return (
     <div>
@@ -82,5 +84,6 @@ createRoot(document.getElementById('root')!).render(
     <AuthProvider>
       <RouterProvider router={router} />
     </AuthProvider>
+    <ToastContainer/>
   </StrictMode>
 )

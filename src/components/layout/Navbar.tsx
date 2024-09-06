@@ -71,8 +71,8 @@ const Navbar = ({}: { isAuthenticated: boolean }) => {
                 <img
                   className="w-8 h-8 rounded-full"
                   src={
-                    state.user.photoUrl
-                      ? state.user.photoUrl
+                    state.user.photoURL
+                      ? state.user.photoURL
                       : 'https://static.vecteezy.com/system/resources/previews/005/544/718/original/profile-icon-design-free-vector.jpg'
                   }
                   alt="user photo"

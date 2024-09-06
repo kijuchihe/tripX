@@ -9,6 +9,7 @@ import {
 import { useAuth } from '../../context/authContext'
 import { auth } from '../../firebase/config'
 import { Link, useNavigate } from 'react-router-dom'
+import {toast} from 'react-toastify'
 
 const AuthForm = ({
   variant = 'login',
@@ -20,6 +21,13 @@ const AuthForm = ({
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+
+  const checkValidFields = () => {
+      if (!email) {toast('Please enter email', {type: 'error'}); return false}
+        if (!password) { toast('Please enter password', {type: 'error'}); return false}
+    if (password.length < 6) { toast('Password must be at least 6 characters', {type: 'error'}); return false}
+        return true
+  }
   const handleGoogleLogin = async (e: any) => {
     e.preventDefault()
     setIsLoading(()=>true)
@@ -28,8 +36,10 @@ const AuthForm = ({
       const provider = new GoogleAuthProvider()
       const result = await signInWithPopup(auth, provider)
       dispatch!({ type: 'AUTHENTICATE', payload: result.user })
+      toast('Login successful', {type: 'success'})
       navigate('/')
     } catch (error) {
+        toast('An error occurred', {type: 'error'})
       console.error(error)
     } finally {
         setIsLoading(()=>false)
@@ -37,7 +47,9 @@ const AuthForm = ({
   }
   const handleLogin = async (e: any) => {
     e.preventDefault()
-    setIsLoading(()=>true)
+    const isValid = checkValidFields()
+    if (isValid) {
+        setIsLoading(()=>true)
     try {
       const userCredential = await signInWithEmailAndPassword(
         auth,
@@ -45,17 +57,22 @@ const AuthForm = ({
         password
       )
       dispatch!({ type: 'AUTHENTICATE', payload: userCredential.user })
+      toast('Login successful', {type: 'success'})
       navigate('/')
     } catch (error) {
       console.error(error)
+      toast('An error occurred', {type: 'error'})
     } finally {
         setIsLoading(()=>false)
+    }
     }
   }
 
   const handleRegister = async (e: any) => {
     e.preventDefault()
-    setIsLoading(()=>true)
+    const isValid = checkValidFields()
+    if (isValid) {
+        setIsLoading(()=>true)
     try {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
@@ -63,12 +80,16 @@ const AuthForm = ({
         password
       )
       dispatch!({ type: 'AUTHENTICATE', payload: userCredential.user })
+      toast('Registration successful', {type: 'success'})
       navigate('/')
     } catch (error) {
+        toast('An error occurred', {type: 'error'})
       console.error(error)
     } finally {
         setIsLoading(()=>false)
     }
+    }
+
   }
 
 const Spinner = () => {
@@ -162,6 +183,8 @@ const Spinner = () => {
             </span>
             <input
               id="email"
+              required
+
               className="rounded-none rounded-e-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-primary outline-none focus:border block flex-1 min-w-0 w-full text-sm p-2.5"
               //   dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500
               placeholder="jon@email.com"
@@ -197,6 +220,7 @@ const Spinner = () => {
                 id="password"
                 className="rounded-none rounded-e-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-primary outline-none block flex-1 min-w-0 w-full text-sm p-2.5  "
                 placeholder="Password"
+                required
                 // dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500
                 type="password"
                 value={password}
@@ -209,13 +233,14 @@ const Spinner = () => {
           <>
             <div className="flex justify-between items-center">
               <p>Don't have an account with us?</p>
-              <Link to="/register">Register</Link>
+              <Link to="/register" className='text-primary'>Register</Link>
             </div>
             <div>
               <button
                 onClick={handleLogin}
                 disabled={isLoading}
-                className="inline-block px-4 py-2 my-2 w-full text-white rounded-lg bg-primary"
+                className="flex items-center justify-center px-4 py-2 my-2 w-full text-white rounded-lg bg-primary"
+                type='submit'
               >
                 {isLoading ? <><Spinner/></>: "Login"}
               </button>
@@ -230,8 +255,9 @@ const Spinner = () => {
             <div>
               <button
                 onClick={handleRegister}
-                className="inline-block px-4 py-2 my-2 w-full text-white rounded-lg bg-primary"
+                className="flex items-center justify-center px-4 py-2 my-2 w-full text-white rounded-lg bg-primary"
                 disabled={isLoading}
+                type='submit'
               >
                 {isLoading ? <><Spinner/></>: "Register"}
               </button>
