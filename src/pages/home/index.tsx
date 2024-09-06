@@ -9,7 +9,7 @@ const HomePage = () => {
   return (
     <Layout>
       <Container isFirst>
-        <div className="w-full h-[500px] flex flex-wrap items-center rounded-xl bg-primary/30 px-4">
+        <div className="w-full h-[500px] flex flex-wrap items-center justify-center md:justify-between rounded-xl bg-primary/30 px-4">
           <div className=" w-full md:w-[48%] flex flex-col gap-4">
             <small className="flex gap-2 items-center text-xs font-light">
               <span className="text-primary">Powered by AI</span>

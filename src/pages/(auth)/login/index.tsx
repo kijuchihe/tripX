@@ -12,10 +12,10 @@ const LoginPage = () => {
   }, [])
   return (
     <div className="flex">
-      <div className="w-full md:w-[50%]">
+      <div className="w-full md:w-[50%] hidden md:block">
         <img src="/login-bg.webp" alt="" />
       </div>
-      <div className="w-full md:w-[50%]  flex flex-col items-center justify-center p-4">
+      <div className="w-full md:w-[50%]  flex flex-col items-center justify-center p-4 bg-[url('/login.webp')] md:bg-white">
         <h1 className="mb-10 text-3xl font-bold">Login</h1>
         <AuthForm />
       </div>

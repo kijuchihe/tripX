@@ -63,7 +63,7 @@ const AuthForm = ({
 
   return (
     <>
-      <form className="p-4 mx-auto w-full text-black rounded-xl">
+      <form className="p-4 mx-auto w-full text-black bg-white rounded-xl">
         <div>
           <button
             onClick={handleGoogleLogin}
