@@ -1,5 +1,5 @@
-import React from 'react'
-import { FaHamburger } from 'react-icons/fa'
+// import React from 'react'
+// import { FaHamburger } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import Layout from '../../components/layout'
 import Container from '../../components/layout/Container'

@@ -17,7 +17,7 @@ function useWeather({
   longitude?: number
   q?: string
 }) {
-  const url = `https://weatherapi-com.p.rapidapi.com/current.json?q=${latitude}%2C${longitude}`
+  let url = `https://weatherapi-com.p.rapidapi.com/current.json?q=${latitude}%2C${longitude}`
   if (latitude && longitude) {
     url = `https://weatherapi-com.p.rapidapi.com/current.json?q=${latitude}%2C${longitude}`
   } else if (q) {
@@ -49,7 +49,7 @@ function useWeather({
       }
     }
     getWeather()
-  }, [latitude, longitude, q])
+  }, [latitude, longitude, q, url])
   return { weather, loading, error }
 }
 

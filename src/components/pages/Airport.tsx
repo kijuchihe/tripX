@@ -1,4 +1,4 @@
-import  { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import useQuery from '../../hooks/useQuery'
 
 const Airport = () => {
@@ -28,13 +28,13 @@ const Airport = () => {
         setAirports(result.data)
         console.log(result.data)
 
-        // for (const _ of result.data) {
-        //   const response = await fetch(
-        //     'https://random.imagecdn.app/v1/image?width=150&height=150'
-        //   )
-        //   const result = await response.json()
-        //   setImages((images) => [...images, result])
-        // }
+        for (const _ of result.data) {
+          const response = await fetch(
+            'https://random.imagecdn.app/v1/image?width=150&height=150'
+          )
+          const result = await response.json()
+          setImages((images) => [...images, result])
+        }
       } catch (error) {
         console.error(error)
       }
@@ -44,7 +44,7 @@ const Airport = () => {
   }, [])
   return (
     <div className="container p-4">
-      <h1 className="text-4xl font-bold mb-4">Airports</h1>
+      <h1 className="mb-4 text-4xl font-bold">Airports</h1>
       {!airports ? (
         <>No airports</>
       ) : (
@@ -53,7 +53,7 @@ const Airport = () => {
             <figure className="bg-gray-300 w-[300px] min-h-[300px] h-fit rounded-lg p-2 flex flex-col">
               <img
                 src={images[Math.floor(Math.random() * images.length)]}
-                className="rounded-lg mb-4"
+                className="mb-4 rounded-lg"
                 alt=""
               />
               <h3 className="text-2xl">{airport.details.name}</h3>
@@ -64,7 +64,7 @@ const Airport = () => {
               <br />
               <button
                 type="button"
-                className="bg-green-600 block p-2 text-white w-full rounded-lg justify-self-end"
+                className="block justify-self-end p-2 w-full text-white bg-green-600 rounded-lg"
               >
                 Check it out
               </button>

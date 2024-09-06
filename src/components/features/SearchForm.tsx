@@ -14,9 +14,9 @@ interface ISearchLocation {
 }
 
 const SearchForm = ({
-  category,
+  category = 'hotels/searchHotels',
 }: {
-  category: 'flights/searchAirport' | 'hotels/searchHotels'
+  category?: 'flights/searchAirport' | 'hotels/searchHotels'
 }) => {
   const [data, setData] = useState<ISearchLocation[]>([])
   const [query, setQuery] = useState<string>('')
@@ -83,7 +83,7 @@ const SearchForm = ({
       >
         {data.length > 0 && (
           <div className="p-2 mt-2 bg-gray-200 rounded-xl dark:bg-gray-800">
-            {data?.map((location: unknown) => {
+            {data?.map((location: any) => {
               return (
                 <div>
                   {/* <img src={location?.image.photo.photoSizes[0].url} alt="" /> */}

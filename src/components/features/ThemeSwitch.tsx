@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { FiSun as SunIcon } from 'react-icons/fi'
-// import { useLocalStorage } from 'usehooks-ts';
+import { useLocalStorage } from 'usehooks-ts'
 import Switch from '../ui/Switch'
 
 function classNames(...classes: string[]) {

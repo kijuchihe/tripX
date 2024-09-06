@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 import SearchForm from '../../components/features/SearchForm'
 import Layout from '../../components/layout'
 import { Tabs } from '../../components/ui/Tabs'

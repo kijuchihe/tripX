@@ -40,6 +40,11 @@ const router = createBrowserRouter([
     element: <AboutPage />,
     errorElement: <ErrorBoundary />,
   },
+  {
+    path: '/cj/about',
+    element: <About />,
+    errorElement: <ErrorBoundary />,
+  },
 
   {
     path: '/search',
