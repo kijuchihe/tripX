@@ -26,6 +26,7 @@ const AuthForm = ({
       const provider = new GoogleAuthProvider()
       const result = await signInWithPopup(auth, provider)
       dispatch!({ type: 'AUTHENTICATE', payload: result.user })
+      navigate('/')
     } catch (error) {
       console.error(error)
     }
@@ -39,6 +40,7 @@ const AuthForm = ({
         password
       )
       dispatch!({ type: 'AUTHENTICATE', payload: userCredential.user })
+      navigate('/')
     } catch (error) {
       console.error(error)
     }
@@ -53,6 +55,7 @@ const AuthForm = ({
         password
       )
       dispatch!({ type: 'AUTHENTICATE', payload: userCredential.user })
+      navigate('/')
     } catch (error) {
       console.error(error)
     }

@@ -1,73 +1,14 @@
 import Layout from '../../components/layout'
-import { Tabs } from '../../components/ui/Tabs'
-import SearchForm from '../../components/features/SearchForm'
 import { adventureImageData, imageData } from '../../data'
 import ImageLazyLoader from '../../components/features/ImageLazyLoader'
 import Container from '../../components/layout/Container'
 const images = imageData.results
 const adventureImages = adventureImageData.results
 
-const features = [
-  {
-    title: 'Smart Suggestions',
-    description:
-      'Receive tailored destination recommendations based on your unique interests, preferences and travel style',
-  },
-  {
-    title: 'Schedule Integration',
-    description:
-      'Efforlesslly integrate your travel scedule and receive recommendations suited to your available time',
-  },
-  {
-    title: 'Personalised Itenary',
-    description:
-      'Efforlesslly integrate your travel scedule and receive recommendations suited to your available time',
-  },
-  {
-    title: 'Location Library',
-    description:
-      'Efforlesslly integrate your travel scedule and receive recommendations suited to your available time',
-  },
-  {
-    title: 'Community Forum',
-    description:
-      'Efforlesslly integrate your travel scedule and receive recommendations suited to your available time',
-  },
-  {
-    title: 'Real-Time tips',
-    description:
-      'Efforlesslly integrate your travel scedule and receive recommendations suited to your available time',
-  },
-]
-
-const tabs = [
-  {
-    header: 'Airports',
-    content: (
-      <>
-        <SearchForm category="flights/searchAirport" />
-      </>
-    ),
-  },
-  {
-    header: 'Hotels',
-    content: (
-      <>
-        <SearchForm category="hotels/searchHotels" />
-      </>
-    ),
-  },
-  { header: 'Restaurants', content: 'forreve All' },
-  { header: 'Vacation Rentals', content: 'forreve All' },
-  { header: 'Cruises', content: 'cruise' },
-  { header: 'Rental Cars', content: 'rent cars' },
-]
-
 const HomePage = () => {
   return (
     <Layout>
       <Container isFirst>
-        <Tabs tabs={tabs} />
         <div className="w-full h-[500px] flex flex-wrap items-center rounded-xl bg-primary/30 px-4">
           <div className=" w-full md:w-[48%] flex flex-col gap-4">
             <small className="flex gap-2 items-center text-xs font-light">
@@ -157,8 +98,10 @@ const HomePage = () => {
             </div>
           </div>
           <div>
-            <h3 className="text-3xl font-bold">Ways to tour Lagos</h3>
-            <p>Book these experiences for a close-up look at Lagos</p>
+            <h3 className="mt-2 text-3xl font-bold">Ways to tour Lagos</h3>
+            <p className="my-2">
+              Book these experiences for a close-up look at Lagos
+            </p>
             <div className="flex flex-wrap gap-8 justify-center items-center md:justify-start">
               {images.map((image, index) => (
                 <figure key={index} className="w-[300px]">
@@ -182,50 +125,46 @@ const HomePage = () => {
           </div>
         </div>
       </Container>
-      <section className="p-4">
-        <div className="container mx-auto">
-          <div className="flex gap-4 items-center">
-            <img
-              srcSet="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2c/17/5b/9c/caption.jpg?w=600&amp;h=-1&amp;s=1 1x,https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2c/17/5b/9c/caption.jpg?w=1200&amp;h=-1&amp;s=1 2x"
-              src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2c/17/5b/9c/caption.jpg?w=600&amp;h=-1&amp;s=1"
-              width="600"
-              height="450"
-              role="none"
-              alt=""
-              loading="lazy"
-              className="rounded-xl"
-            />
-            <div className="flex flex-col gap-4 items-center text-center">
-              <h2 className="text-3xl">It’s easier than ever to go together</h2>
-              <p className="">
-                Travel is better when you can share it with your best friend.
-                Find all the tips, guides, and tools you need to take a dream
-                trip with your dog.
-              </p>
-              <div className="H0 xUqsL">
-                <div className="ejjmj">
-                  <a
-                    className="rmyCe _G B- z _S c Wc wSSLS AeLHi sOtnj"
-                    target="_blank"
-                    rel="sponsored"
-                    href="/Articles-l2cB2pP2AiZc-Pet_friendly_travel.html"
-                  >
-                    <span className="px-4 py-2 text-white bg-black rounded-full">
-                      Explore more
-                    </span>
-                  </a>
-                </div>
+      <Container className="py-4">
+        <div className="flex gap-4 items-center">
+          <img
+            srcSet="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2c/17/5b/9c/caption.jpg?w=600&amp;h=-1&amp;s=1 1x,https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2c/17/5b/9c/caption.jpg?w=1200&amp;h=-1&amp;s=1 2x"
+            src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2c/17/5b/9c/caption.jpg?w=600&amp;h=-1&amp;s=1"
+            width="600"
+            height="450"
+            role="none"
+            alt=""
+            loading="lazy"
+            className="rounded-xl"
+          />
+          <div className="flex flex-col gap-4 items-center text-center">
+            <h2 className="text-3xl">It’s easier than ever to go together</h2>
+            <p className="">
+              Travel is better when you can share it with your best friend. Find
+              all the tips, guides, and tools you need to take a dream trip with
+              your dog.
+            </p>
+            <div className="H0 xUqsL">
+              <div className="ejjmj">
+                <a
+                  className="rmyCe _G B- z _S c Wc wSSLS AeLHi sOtnj"
+                  target="_blank"
+                  rel="sponsored"
+                  href="/Articles-l2cB2pP2AiZc-Pet_friendly_travel.html"
+                >
+                  <span className="px-4 py-2 text-white bg-black rounded-full">
+                    Explore more
+                  </span>
+                </a>
               </div>
             </div>
           </div>
         </div>
-      </section>
-      <section>
-        <div className="container mx-auto">
-          <h3 className="text-3xl font-bold">Home Rentals Near You</h3>
-          <p>We think you'd enjoy these homes for a quick trip out of town.</p>
-        </div>
-      </section>
+      </Container>
+      <Container>
+        <h3 className="text-3xl font-bold">Home Rentals Near You</h3>
+        <p>We think you'd enjoy these homes for a quick trip out of town.</p>
+      </Container>
     </Layout>
   )
 }

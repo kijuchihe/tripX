@@ -51,6 +51,7 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   useEffect(() => {
     auth.onAuthStateChanged((user: any) => {
       if (user) {
+        console.log(user)
         dispatch({ type: 'AUTHENTICATE', payload: user })
       } else {
         dispatch({ type: 'UNAUTHENTICATE' })

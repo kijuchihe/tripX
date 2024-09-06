@@ -2,12 +2,15 @@ import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../../context/authContext'
 
 import AuthForm from '../../../components/features/AuthForm'
+import { useEffect } from 'react'
 
 const RegisterPage = () => {
-  //   const { state } = useAuth()
-  //   const navigate = useNavigate()
+  const { state } = useAuth()
+  const navigate = useNavigate()
 
-  //   if (state.isAuthenticated) navigate('/')
+  useEffect(() => {
+    if (state.isAuthenticated) navigate('/')
+  }, [])
   return (
     <div className="flex">
       <div className="w-full md:w-[50%]">
