@@ -4,10 +4,10 @@ const Switch = ({
   className,
   children,
 }: {
-  checked: boolean;
-  onChange: Function;
-  className: string;
-  children: React.ReactNode;
+  checked: boolean
+  onChange: (params: any) => any
+  className: string
+  children: React.ReactNode
 }) => {
   return (
     <div className={className}>
@@ -18,14 +18,14 @@ const Switch = ({
         hidden
         checked={checked}
         onChange={(e) => {
-          onChange(e.target.checked);
+          onChange(e.target.checked)
         }}
       />
       <label htmlFor="themeSwitch" className="w-full cursor-pointer">
         {children}
       </label>
     </div>
-  );
-};
+  )
+}
 
-export default Switch;
+export default Switch

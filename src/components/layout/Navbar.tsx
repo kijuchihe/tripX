@@ -1,122 +1,48 @@
-const Navbar = ({
-  setShowSidebar,
-}: {
-  setShowSidebar: React.Dispatch<React.SetStateAction<boolean>>
-}) => {
+import { FaHamburger } from 'react-icons/fa'
+import { Link, NavLink } from 'react-router-dom'
+import SearchForm from '../features/SearchForm'
+
+const Navbar = () => {
   return (
-    <>
-      <nav className="fixed top-0 z-50 w-full bg-gray-200 border-b border-gray-200 dark:bg-gray-900 dark:border-gray-700 h-[60px]">
-        <div className="px-3 py-3 lg:px-5 lg:pl-3">
-          <div className="flex justify-between items-center">
-            <div className="flex justify-start items-center rtl:justify-end">
-              <button
-                type="button"
-                className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                onClick={() => {
-                  setShowSidebar((prev) => !prev)
-                }}
-              >
-                <span className="sr-only">Open sidebar</span>
-                <svg
-                  className="w-6 h-6"
-                  aria-hidden="true"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    clipRule="evenodd"
-                    fillRule="evenodd"
-                    d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
-                  ></path>
-                </svg>
-              </button>
-              <a href="/" className="flex ms-2 md:me-24">
-                <span className="self-center text-xl font-semibold whitespace-nowrap sm:text-2xl dark:text-white">
-                  tripX
-                </span>
-              </a>
-            </div>
-            <div className="flex items-center">
-              <div className="flex items-center ms-3">
-                <div>
-                  <button
-                    type="button"
-                    className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-                    aria-expanded="false"
-                    data-dropdown-toggle="dropdown-user"
-                  >
-                    <span className="sr-only">Open user menu</span>
-                    <img
-                      className="w-8 h-8 rounded-full"
-                      src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                      alt="user photo"
-                    />
-                  </button>
-                </div>
-                <div
-                  className="hidden z-50 my-4 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
-                  id="dropdown-user"
-                >
-                  <div className="px-4 py-3" role="none">
-                    <p
-                      className="text-sm text-gray-900 dark:text-white"
-                      role="none"
-                    >
-                      Neil Sims
-                    </p>
-                    <p
-                      className="text-sm font-medium text-gray-900 truncate dark:text-gray-300"
-                      role="none"
-                    >
-                      neil.sims@flowbite.com
-                    </p>
-                  </div>
-                  <ul className="py-1" role="none">
-                    <li>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                        role="menuitem"
-                      >
-                        Dashboard
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                        role="menuitem"
-                      >
-                        Settings
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                        role="menuitem"
-                      >
-                        Earnings
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                        role="menuitem"
-                      >
-                        Sign out
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
+    <header className="h-[70px] sticky top-0 left-0 bg-white z-30 w-screen">
+      <div className="container flex gap-4 justify-between items-center px-4 mx-auto w-full h-full">
+        <Link to="/" className="text-3xl font-bold text-primary">
+          TripX
+        </Link>
+        <SearchForm category="hotels/searchHotels" />
+        <nav>
+          <ul className="flex gap-x-4 items-center font-bold">
+            <li>
+              <NavLink to="/">Home</NavLink>
+            </li>
+            <li>
+              <NavLink to="/about">About</NavLink>
+            </li>
+            <li>
+              <NavLink to="/">Features</NavLink>
+            </li>
+            <li>
+              <NavLink to="/">Services</NavLink>
+            </li>
+            <li>
+              <NavLink to="/">Contact</NavLink>
+            </li>
+          </ul>
+        </nav>
+        <div className="block md:hidden">
+          <FaHamburger className="text-3xl" />
         </div>
-      </nav>
-    </>
+        <div className="flex gap-x-4 items-center text-primary">
+          <Link
+            to="/login"
+            className="px-4 py-2 text-white rounded bg-primary"
+            role="button"
+          >
+            Login
+          </Link>
+        </div>
+      </div>
+    </header>
   )
 }
 
