@@ -13,6 +13,7 @@ import AboutPage from './pages/about/index.tsx'
 import SearchPage from './pages/search/index.tsx'
 import LoginPage from './pages/(auth)/login/index.tsx'
 import { AuthProvider } from './context/authContext.tsx'
+import RegisterPage from './pages/(auth)/register/index.tsx'
 const ErrorBoundary = () => {
   return (
     <div>
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
   {
     path: '/login',
     element: <LoginPage />,
+  },
+  {
+    path: '/register',
+    element: <RegisterPage />,
   },
   {
     path: '/airport',

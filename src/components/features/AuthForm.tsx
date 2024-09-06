@@ -8,17 +8,20 @@ import {
 } from 'firebase/auth'
 import { useAuth } from '../../context/authContext'
 import { auth } from '../../firebase/config'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const AuthForm = ({
   variant = 'login',
 }: {
   variant?: 'login' | 'register'
 }) => {
+  const navigate = useNavigate()
   const { dispatch } = useAuth()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const handleGoogleLogin = async () => {
+  const handleGoogleLogin = async (e: any) => {
+    e.preventDefault()
+    // const googleAuth = getAuth()
     try {
       const provider = new GoogleAuthProvider()
       const result = await signInWithPopup(auth, provider)
@@ -27,7 +30,8 @@ const AuthForm = ({
       console.error(error)
     }
   }
-  const handleLogin = async () => {
+  const handleLogin = async (e: any) => {
+    e.preventDefault()
     try {
       const userCredential = await signInWithEmailAndPassword(
         auth,
@@ -40,7 +44,8 @@ const AuthForm = ({
     }
   }
 
-  const handleRegister = async () => {
+  const handleRegister = async (e: any) => {
+    e.preventDefault()
     try {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
@@ -60,6 +65,7 @@ const AuthForm = ({
           <button
             onClick={handleGoogleLogin}
             className="flex gap-2 items-center p-2 w-full rounded border"
+            type="button"
           >
             <svg
               className="w-4 h-4"
@@ -192,8 +198,17 @@ const AuthForm = ({
           </>
         ) : (
           <>
+            <div className="flex justify-between items-center">
+              <p>Already have an account with us?</p>
+              <Link to="/login">Login</Link>
+            </div>
             <div>
-              <button onClick={handleRegister}>Register</button>
+              <button
+                onClick={handleRegister}
+                className="inline-block px-4 py-2 my-2 w-full text-white rounded-lg bg-primary"
+              >
+                Register
+              </button>
             </div>
           </>
         )}
