@@ -35,7 +35,7 @@ const Navbar = ({}: { isAuthenticated: boolean }) => {
         <div className="hidden md:block">
           <SearchForm category="hotels/searchHotels" />
         </div>
-        <nav className="hidden md:blcok">
+        <nav className="hidden md:block">
           <ul className="flex gap-x-4 items-center font-bold">
             {navLinks.map((link, index) => (
               <li key={index}>
