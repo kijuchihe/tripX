@@ -4,6 +4,10 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Hotels from './components/pages/Hotels.tsx'
 import Airport from './components/pages/Airport.tsx'
+
+import About from './components/pages/About.tsx'
+import Home from './components/pages/HomePage.tsx'
+
 import HomePage from './pages/home/index.tsx'
 import AboutPage from './pages/about/index.tsx'
 import SearchPage from './pages/search/index.tsx'
@@ -23,11 +27,25 @@ const router = createBrowserRouter([
     element: <HomePage />,
     errorElement: <ErrorBoundary />,
   },
+
+  {
+    path: '/home',
+    element: <HomePage />,
+    errorElement: <ErrorBoundary />,
+  },
+
+  {
+    path: '/about',
+    element: <AboutPage />,
+    errorElement: <ErrorBoundary />,
+  },
+
   {
     path: '/search',
     element: <SearchPage />,
     errorElement: <ErrorBoundary />,
   },
+
   {
     path: '/about',
     element: <AboutPage />,
@@ -41,6 +59,7 @@ const router = createBrowserRouter([
     path: '/airport',
     element: <Airport />,
   },
+
   {
     path: '/hotels',
     element: <Hotels />,
