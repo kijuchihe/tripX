@@ -4,30 +4,30 @@ import {
   FaTemperatureHigh,
   FaWater,
   FaWind,
-} from 'react-icons/fa';
-import useQuery from '../../hooks/useQuery';
-import useWeather from '../../hooks/useWeather';
-import SearchForm from '../features/SearchForm';
-import Layout from '../layout';
-import { ITab, Tabs } from '../ui/Tabs';
-import { FaU } from 'react-icons/fa6';
-import Map from '../features/Map';
+} from 'react-icons/fa'
+import useQuery from '../../hooks/useQuery'
+import useWeather from '../../hooks/useWeather'
+import SearchForm from '../features/SearchForm'
+import Layout from '../layout'
+import { ITab, Tabs } from '../ui/Tabs'
+import { FaU } from 'react-icons/fa6'
+import Map from '../features/Map'
 
 const WeatherResults = () => {
-  let query = useQuery();
+  const query = useQuery()
   const { weather, loading } = useWeather({
     latitude: Number(query.get('lat')!),
     longitude: Number(query.get('lon')!),
     q: query.get('q')!,
-  });
+  })
   const hasParameters = (): boolean => {
     if ((query.get('lat') && query.get('lon')) || query.get('q')) {
-      return true;
+      return true
     }
-    return false;
-  };
+    return false
+  }
   const itemClassName =
-    'bg-gray-300 w-[120px] h-[120px] dark:bg-gray-800 rounded-xl p-4 flex items-center gap-2 justify-center flex-col hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer';
+    'bg-gray-300 w-[120px] h-[120px] dark:bg-gray-800 rounded-xl p-4 flex items-center gap-2 justify-center flex-col hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer'
   const tabs: ITab[] = [
     {
       header: 'Other details',
@@ -82,7 +82,7 @@ const WeatherResults = () => {
       header: 'Suggested Activities',
       content: 'The api that we used did not have this feature',
     },
-  ];
+  ]
   return (
     <Layout>
       <section>
@@ -140,7 +140,7 @@ const WeatherResults = () => {
         )}
       </section>
     </Layout>
-  );
-};
+  )
+}
 
-export default WeatherResults;
+export default WeatherResults

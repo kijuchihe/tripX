@@ -14,7 +14,7 @@ const options = {
 }
 
 function useAutocomplete(q: string) {
-  let url = `https://travel-advisor.p.rapidapi.com/locations/v2/auto-complete?query=${q}&lang=en_US&units=km`
+  const url = `https://travel-advisor.p.rapidapi.com/locations/v2/auto-complete?query=${q}&lang=en_US&units=km`
 
   const [locations, setLocations] = useState<any>(null)
   const [loading, setLoading] = useState<boolean>(true)

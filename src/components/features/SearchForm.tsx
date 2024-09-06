@@ -62,13 +62,13 @@ const SearchForm = ({
     <div className="relative mx-auto w-fit">
       <form
         action=""
-        className="flex items-center w-[300px] md:w-[400px] gap-4 bg-gray-200 py-2 px-4 rounded-full border-2 border-transparent focus-within:border-blue-500 focus-within:border-2"
+        className="flex items-center w-[300px] md:w-[350px] gap-4 bg-gray-200 py-3 px-4 rounded-full border-2 border-transparent focus-within:border-blue-500 focus-within:border-2"
         onSubmit={handleSubmit}
       >
         <input
           type="text"
           placeholder={`Search ${category.split('search')[1].toLowerCase()}`}
-          className="flex-1 bg-transparent border-none outline-none  placeholder:text-gray-700"
+          className="flex-1 bg-transparent border-none outline-none placeholder:text-gray-700"
           value={query}
           onChange={handleChange}
         />
@@ -83,7 +83,7 @@ const SearchForm = ({
       >
         {data.length > 0 && (
           <div className="p-2 mt-2 bg-gray-200 rounded-xl dark:bg-gray-800">
-            {data?.map((location: any) => {
+            {data?.map((location: unknown) => {
               return (
                 <div>
                   {/* <img src={location?.image.photo.photoSizes[0].url} alt="" /> */}
