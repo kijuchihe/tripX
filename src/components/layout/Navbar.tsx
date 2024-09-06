@@ -57,7 +57,7 @@ const Navbar = ({}: { isAuthenticated: boolean }) => {
           </div>
         ) : (
           <>
-            <div className="flex relative items-center space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
+            <div className="hidden relative items-center space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse md:flex">
               <button
                 type="button"
                 className="flex text-sm bg-gray-300 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300"
@@ -82,7 +82,7 @@ const Navbar = ({}: { isAuthenticated: boolean }) => {
               <div
                 className={`${
                   userMenuOpen ? 'block' : 'hidden'
-                } z-50 my-4 text-base list-none bg-white rounded-lg divide-y divide-gray-100 shadow  absolute right-[20px] top-6 p-4`}
+                } z-50 my-4 text-base list-none bg-white rounded-lg divide-y divide-gray-100 shadow  absolute right-[20px] top-6 p-4 `}
                 id="user-dropdown"
                 // dark:bg-gray-700 dark:divide-gray-600
               >
@@ -146,9 +146,52 @@ const Navbar = ({}: { isAuthenticated: boolean }) => {
           </>
         )}
 
-        <div className="block relative md:hidden">
+        <div className="flex relative gap-2 items-center md:hidden">
+          <button
+            type="button"
+            onClick={() => {
+              setMobileNavOpen((prev) => !prev)
+            }}
+          >
+            <FaHamburger className="text-3xl" />
+          </button>
+          <div
+            className={`${
+              mobileNavOpen ? 'block' : 'hidden'
+            } z-50 my-4 text-base list-none bg-white rounded-lg divide-y divide-gray-100 shadow  absolute right-[20px] top-6 p-4 min-w-[150px]`}
+            id="user-dropdown"
+            // dark:bg-gray-700 dark:divide-gray-600
+          >
+            <ul
+              className="flex flex-col items-center py-2"
+              aria-labelledby="user-menu-button"
+            >
+              {navLinks.map((link, index) => (
+                <li key={index}>
+                  <Link
+                    to={link.path}
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    //    dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+              {!isAuthenticated && (
+                <div className="flex gap-x-4 items-center text-primary">
+                  <Link
+                    to="/login"
+                    className="px-4 py-2 text-white rounded bg-primary"
+                    role="button"
+                  >
+                    Login
+                  </Link>
+                </div>
+              )}
+            </ul>
+          </div>
           {isAuthenticated && (
-            <div className="hidden relative items-center space-x-3  md:order-2 md:space-x-0 rtl:space-x-reverse md:flex">
+            <div className="flex relative items-center space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse md:hidden">
               <button
                 type="button"
                 className="flex text-sm bg-gray-300 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300"
@@ -236,49 +279,6 @@ const Navbar = ({}: { isAuthenticated: boolean }) => {
               </div>
             </div>
           )}
-          <button
-            type="button"
-            onClick={() => {
-              setMobileNavOpen((prev) => !prev)
-            }}
-          >
-            <FaHamburger className="text-3xl" />
-          </button>
-          <div
-            className={`${
-              mobileNavOpen ? 'block' : 'hidden'
-            } z-50 my-4 text-base list-none bg-white rounded-lg divide-y divide-gray-100 shadow  absolute right-[20px] top-6 p-4 min-w-[150px]`}
-            id="user-dropdown"
-            // dark:bg-gray-700 dark:divide-gray-600
-          >
-            <ul
-              className="flex flex-col items-center py-2"
-              aria-labelledby="user-menu-button"
-            >
-              {navLinks.map((link, index) => (
-                <li key={index}>
-                  <Link
-                    to={link.path}
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    //    dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-              {!isAuthenticated && (
-                <div className="flex gap-x-4 items-center text-primary">
-                  <Link
-                    to="/login"
-                    className="px-4 py-2 text-white rounded bg-primary"
-                    role="button"
-                  >
-                    Login
-                  </Link>
-                </div>
-              )}
-            </ul>
-          </div>
         </div>
       </div>
     </header>

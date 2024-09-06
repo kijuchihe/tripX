@@ -13,7 +13,7 @@ const Container: React.FC<containerProps> = ({
   return (
     <section
       {...props}
-      className={`${isFirst && 'h-[calc(100vh-70px)]'} ${className}`}
+      className={`${isFirst && 'min-h-[calc(100vh-70px)] h-fit'} ${className}`}
     >
       <div className="container px-4 mx-auto lg:px-0">{children}</div>
     </section>

@@ -13,7 +13,7 @@ const ImageLazyLoader: React.FC<ImageLoaderProps> = ({
   alt,
   ...props
 }) => {
-  const [isLoaded, setIsLoaded] = useState(false)
+  const [isLoaded, setIsLoaded] = useState(true)
 
   const getBlurredImage = (blurUrl: string) => {
     const width = 32
@@ -54,7 +54,7 @@ const ImageLazyLoader: React.FC<ImageLoaderProps> = ({
         className={`object-cover transition-opacity duration-300 ${
           isLoaded ? 'opacity-100' : 'hidden'
         } ${className}`}
-        onLoad={() => setIsLoaded(true)}
+        onLoad={() => setIsLoaded(() => true)}
         loading="lazy"
         {...props}
       />
