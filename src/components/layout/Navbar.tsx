@@ -74,7 +74,7 @@ const Navbar = ({ isAuthenticated }: { isAuthenticated: boolean }) => {
               <div
                 className={`${
                   userMenuOpen ? 'block' : 'hidden'
-                } z-50 my-4 text-base list-none bg-white rounded-lg divide-y divide-gray-100 shadow  absolute right-[20px] top-10 p-4`}
+                } z-50 my-4 text-base list-none bg-white rounded-lg divide-y divide-gray-100 shadow  absolute right-[20px] top-6 p-4`}
                 id="user-dropdown"
                 // dark:bg-gray-700 dark:divide-gray-600
               >
@@ -139,7 +139,7 @@ const Navbar = ({ isAuthenticated }: { isAuthenticated: boolean }) => {
           <div
             className={`${
               mobileNavOpen ? 'block' : 'hidden'
-            } z-50 my-4 text-base list-none bg-white rounded-lg divide-y divide-gray-100 shadow  absolute right-[20px] top-10 p-4`}
+            } z-50 my-4 text-base list-none bg-white rounded-lg divide-y divide-gray-100 shadow  absolute right-[20px] top-6 p-4 min-w-[150px]`}
             id="user-dropdown"
             // dark:bg-gray-700 dark:divide-gray-600
           >

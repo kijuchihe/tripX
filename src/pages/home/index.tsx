@@ -9,18 +9,18 @@ const HomePage = () => {
   return (
     <Layout>
       <Container isFirst>
-        <div className="flex flex-wrap justify-center items-center px-4 w-full rounded-xl md:justify-between bg-primary/30">
-          <div className=" w-full md:w-[48%] flex flex-col gap-4">
+        <div className="flex flex-wrap min-h-[500px] justify-center items-center p-4 w-full rounded-xl md:justify-between bg-primary/30">
+          <div className=" w-full md:w-[48%] flex flex-col items-center md:items-start gap-4">
             <small className="flex gap-2 items-center text-xs font-light">
               <span className="text-primary">Powered by AI</span>
               <span className="text-black">
                 <span className="p-1 bg-white rounded-lg">BETA</span>
               </span>
             </small>
-            <p className="text-6xl font-bold text-primary">
+            <p className="text-6xl font-bold text-center text-primary md:text-left">
               Get custom recs for your next trip
             </p>
-            <div className="text-3xl font-bold text-primary">
+            <div className="text-3xl font-bold text-center text-primary md:text-left">
               Find great eats, experiences, and more—inspired by things you
               love.
             </div>

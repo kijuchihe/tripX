@@ -15,7 +15,7 @@ const Container: React.FC<containerProps> = ({
       {...props}
       className={`${isFirst && 'h-[calc(100vh-70px)]'} ${className}`}
     >
-      <div className="container mx-auto">{children}</div>
+      <div className="container px-4 mx-auto lg:px-0">{children}</div>
     </section>
   )
 }
