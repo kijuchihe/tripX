@@ -11,7 +11,7 @@ const HomePage = () => {
       <Container isFirst>
         <div className="flex flex-wrap min-h-[500px] justify-center items-center p-4 w-full rounded-xl md:justify-between bg-primary/30 gap-2">
           <div className=" w-full md:w-[48%] flex flex-col items-center md:items-start gap-4">
-            <small className="flex gap-2 items-center text-xs font-light">
+            <small className="flex items-center text-xs font-light gap-2">
               <span className="text-primary">Powered by AI</span>
               <span className="text-black">
                 <span className="p-1 bg-white rounded-lg">BETA</span>
@@ -26,7 +26,7 @@ const HomePage = () => {
             </div>
             <div>
               <a
-                className="flex gap-2 items-center px-4 py-3 text-white rounded-full bg-primary w-fit"
+                className="flex items-center px-4 py-3 text-white rounded-full gap-2 bg-primary w-fit"
                 data-automation="GaiEntryButton"
                 href="/ai"
                 target="_self"
@@ -76,7 +76,7 @@ const HomePage = () => {
             <p className="my-4">
               {"2024's"} Travelers’ Choice Awards Best of the Best Things To Do
             </p>
-            <div className="flex flex-wrap gap-8 justify-center items-center md:justify-start">
+            <div className="flex flex-wrap items-center justify-center gap-8 md:justify-start">
               {adventureImages.map((image, index) => (
                 <figure key={index} className="w-[300px]">
                   <ImageLazyLoader
@@ -102,7 +102,7 @@ const HomePage = () => {
             <p className="my-2">
               Book these experiences for a close-up look at Lagos
             </p>
-            <div className="flex flex-wrap gap-8 justify-center items-center md:justify-start">
+            <div className="flex flex-wrap items-center justify-center gap-8 md:justify-start">
               {images.map((image, index) => (
                 <figure key={index} className="w-[300px]">
                   <ImageLazyLoader
@@ -126,18 +126,20 @@ const HomePage = () => {
         </div>
       </Container>
       <Container className="py-4">
-        <div className="flex gap-4 items-center">
-          <img
-            srcSet="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2c/17/5b/9c/caption.jpg?w=600&amp;h=-1&amp;s=1 1x,https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2c/17/5b/9c/caption.jpg?w=1200&amp;h=-1&amp;s=1 2x"
-            src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2c/17/5b/9c/caption.jpg?w=600&amp;h=-1&amp;s=1"
-            width="600"
-            height="450"
-            role="none"
-            alt=""
-            loading="lazy"
-            className="rounded-xl"
-          />
-          <div className="flex flex-col gap-4 items-center text-center">
+        <div className="flex flex-wrap items-center gap-2">
+          <div className="w-full md:w=[48%]">
+            <img
+              srcSet="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2c/17/5b/9c/caption.jpg?w=600&amp;h=-1&amp;s=1 1x,https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2c/17/5b/9c/caption.jpg?w=1200&amp;h=-1&amp;s=1 2x"
+              src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2c/17/5b/9c/caption.jpg?w=600&amp;h=-1&amp;s=1"
+              width="600"
+              height="450"
+              role="none"
+              alt=""
+              loading="lazy"
+              className="rounded-xl"
+            />
+          </div>
+          <div className="flex flex-col items-center text-center gap-4">
             <h2 className="text-3xl">It’s easier than ever to go together</h2>
             <p className="">
               Travel is better when you can share it with your best friend. Find
@@ -160,10 +162,6 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-      </Container>
-      <Container>
-        <h3 className="text-3xl font-bold">Home Rentals Near You</h3>
-        <p>We think you'd enjoy these homes for a quick trip out of town.</p>
       </Container>
     </Layout>
   )
