@@ -10,7 +10,7 @@ import ThemeSwitch from '../features/ThemeSwitch'
 const navLinks = [
   { name: 'Home', path: '/' },
   { name: 'About', path: '/about' },
-  { name: 'Features', path: '/' },
+  { name: 'Features', path: '/features' },
   { name: 'Services', path: '/services' },
   { name: 'Contact', path: '/contact' },
 ]
