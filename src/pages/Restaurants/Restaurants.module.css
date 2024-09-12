@@ -1,0 +1,137 @@
+/* .topDestinations{
+    padding: 2rem;
+    background-color: #f5f5f5;
+}
+
+.title{
+    text-align: center;
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+}
+
+.grid{
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 250px;
+}
+
+.image{
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+h3{
+    margin: 0.5rem 0;
+    color: #34495e;
+}
+
+p{
+    color: #7f8c8d;
+}
+
+.recommendationsPage{
+    font-family: Arial, sans-serif;
+    background-color: #f9fafb;
+    color: #333;
+    padding: 2rem;
+} */
+
+@media(max-width: 768px){
+    .recommendationsPage{
+       padding: 1rem;
+    }
+   }
+   
+   .recommendationsPage {
+       text-align: center;
+       padding: 40px;
+     }
+     
+     .topSection {
+       margin-bottom: 20px;
+     }
+     
+     .heading {
+       font-size: 2.5rem;
+       font-weight: bold;
+       margin-bottom: 20px;
+     }
+     
+     .categories {
+       display: flex;
+       justify-content: center;
+       gap: 20px;
+     }
+     
+     .categoryButton {
+       background: none;
+       border: none;
+       font-size: 1rem;
+       cursor: pointer;
+       display: flex;
+       align-items: center;
+       gap: 5px;
+       padding: 10px;
+     }
+     
+     .categoryButton:hover {
+       border-bottom: 2px solid black;
+     }
+     
+     .searchSection {
+       margin: 20px auto;
+       display: flex;
+       justify-content: center;
+     }
+     
+     .searchForm {
+       display: flex;
+       align-items: center;
+     }
+     
+     .searchInputWrapper {
+       position: relative;
+       width: 400px;
+     }
+     
+     .searchIcon {
+       position: absolute;
+       left: 10px;
+       top: 50%;
+       transform: translateY(-50%);
+       font-size: 1.2rem;
+     }
+     
+     .searchInput {
+       width: 100%;
+       padding: 12px 15px 12px 40px;
+       font-size: 1rem;
+       border: 2px solid #ccc;
+       border-radius: 25px;
+     }
+     
+     .searchButton {
+       background-color: #20c997;
+       border: none;
+       padding: 12px 20px;
+       margin-left: 10px;
+       color: white;
+       border-radius: 25px;
+       cursor: pointer;
+       font-size: 1rem;
+     }
+     
+     .searchButton:hover {
+       background-color: #17a589;
+     }
+     
+     .recommendations {
+       margin-top: 40px;
+     }
+     
