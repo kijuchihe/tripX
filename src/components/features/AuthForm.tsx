@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   //   getAuth,
   createUserWithEmailAndPassword,
@@ -23,7 +23,23 @@ const AuthForm = ({
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const { state } = useAuth()
+  useEffect(() => {
+    if (state.isAuthenticated) {
+      navigate('/')
+    }
 
+    getRedirectResult(auth)
+      .then((result) => {
+        if (result) {
+          dispatch!({ type: 'AUTHENTICATE', payload: result.user })
+          navigate('/')
+        }
+      })
+      .catch((error) => {
+        console.error('Error retrieving redirect result:', error)
+      })
+  }, [])
   const checkValidFields = () => {
     if (!email) {
       toast('Please enter email', { type: 'error' })
