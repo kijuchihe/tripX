@@ -5,7 +5,6 @@ import {
   signInWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
-  signInWithRedirect,
 } from 'firebase/auth'
 import { useAuth } from '../../context/authContext'
 import { auth } from '../../firebase/config'
@@ -44,7 +43,8 @@ const AuthForm = ({
     // const googleAuth = getAuth()
     try {
       const provider = new GoogleAuthProvider()
-      const result = await signInWithRedirect(auth, provider)
+      const result = await signInWithPopup(auth, provider)
+      console.log(result)
       dispatch!({ type: 'AUTHENTICATE', payload: result.user })
       toast('Login successful', { type: 'success' })
       navigate('/')
@@ -140,7 +140,7 @@ const AuthForm = ({
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <g clip-path="url(#clip0_13183_10121)">
+              <g clipPath="url(#clip0_13183_10121)">
                 <path
                   d="M20.3081 10.2303C20.3081 9.55056 20.253 8.86711 20.1354 8.19836H10.7031V12.0492H16.1046C15.8804 13.2911 15.1602 14.3898 14.1057 15.0879V17.5866H17.3282C19.2205 15.8449 20.3081 13.2728 20.3081 10.2303Z"
                   fill="#3F83F8"

@@ -33,7 +33,7 @@ const Navbar = ({}: { isAuthenticated: boolean }) => {
           TripX
         </Link>
         <div className="hidden md:block">
-          <SearchForm category="hotels/searchHotels" />
+          <SearchForm />
         </div>
         <nav className="hidden md:block">
           <ul className="flex gap-x-4 items-center font-bold">

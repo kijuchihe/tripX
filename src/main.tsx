@@ -2,20 +2,20 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import Hotels from './components/pages/Hotels.tsx'
-import Airport from './components/pages/Airport.tsx'
-
 import About from './components/pages/About.tsx'
 import Home from './components/pages/HomePage.tsx'
-
 import HomePage from './pages/home/index.tsx'
 import AboutPage from './pages/about/index.tsx'
 import SearchPage from './pages/search/index.tsx'
 import LoginPage from './pages/(auth)/login/index.tsx'
 import { AuthProvider } from './context/authContext.tsx'
 import RegisterPage from './pages/(auth)/register/index.tsx'
- import { ToastContainer } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import Restaurants from './pages/Restaurants/Restaurants.tsx'
+import Hotels from './pages/search/Hotels.tsx'
+import Rentals from './pages/search/Rentals.tsx'
+
 const ErrorBoundary = () => {
   return (
     <div>
@@ -30,7 +30,10 @@ const router = createBrowserRouter([
     element: <HomePage />,
     errorElement: <ErrorBoundary />,
   },
-
+  {
+    path: 'restaurants',
+    element: <Restaurants />,
+  },
   {
     path: '/home',
     element: <Home />,
@@ -53,6 +56,11 @@ const router = createBrowserRouter([
     element: <SearchPage />,
     errorElement: <ErrorBoundary />,
   },
+  {
+    path: '/search/hotels',
+    element: <Hotels />,
+  },
+  { path: '/search/rentals', element: <Rentals /> },
 
   {
     path: '/about',
@@ -67,16 +75,6 @@ const router = createBrowserRouter([
     path: '/register',
     element: <RegisterPage />,
   },
-  {
-    path: '/airport',
-    element: <Airport />,
-  },
-
-  {
-    path: '/hotels',
-    element: <Hotels />,
-    errorElement: <ErrorBoundary />,
-  },
 ])
 
 createRoot(document.getElementById('root')!).render(
@@ -84,6 +82,6 @@ createRoot(document.getElementById('root')!).render(
     <AuthProvider>
       <RouterProvider router={router} />
     </AuthProvider>
-    <ToastContainer/>
+    <ToastContainer />
   </StrictMode>
 )

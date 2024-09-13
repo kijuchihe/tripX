@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import useQuery from '../../hooks/useQuery'
 
-const Airport = () => {
+const Flights = () => {
   const query = useQuery()
   const hotelQuery = query.get('q')
   const [airports, setAirports] = useState<any[]>([])
@@ -64,7 +64,7 @@ const Airport = () => {
               <br />
               <button
                 type="button"
-                className="block justify-self-end p-2 w-full text-white bg-green-600 rounded-lg"
+                className="block w-full p-2 text-white bg-green-600 rounded-lg justify-self-end"
               >
                 Check it out
               </button>
@@ -76,4 +76,4 @@ const Airport = () => {
   )
 }
 
-export default Airport
+export default Flights
