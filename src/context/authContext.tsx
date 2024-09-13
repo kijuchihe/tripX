@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useReducer } from 'react'
 import { auth } from '../firebase/config'
-import { getRedirectResult } from 'firebase/auth'
+// import { getRedirectResult } from 'firebase/auth'
 
 interface State {
   isAuthenticated: boolean
@@ -58,21 +58,6 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         dispatch({ type: 'UNAUTHENTICATE' })
       }
     })
-    getRedirectResult(auth)
-      .then((result) => {
-        if (result) {
-          // The user is signed in
-          const user = result.user
-          console.log('Signed in user:', user)
-        } else {
-          // No user is signed in
-          console.log('No user signed in')
-        }
-      })
-      .catch((error) => {
-        // Handle any errors
-        console.error('Error retrieving redirect result:', error)
-      })
   }, [dispatch])
   return (
     <AuthContext.Provider value={{ state, dispatch }}>

@@ -6,6 +6,7 @@ import {
   GoogleAuthProvider,
   // signInWithPopup,
   signInWithRedirect,
+  getRedirectResult,
 } from 'firebase/auth'
 import { useAuth } from '../../context/authContext'
 import { auth } from '../../firebase/config'
@@ -44,9 +45,24 @@ const AuthForm = ({
     // const googleAuth = getAuth()
     try {
       const provider = new GoogleAuthProvider()
-      const result = await signInWithRedirect(auth, provider)
-      console.log(result)
-      // dispatch!({ type: 'AUTHENTICATE', payload: result.user })
+      await signInWithRedirect(auth, provider)
+      getRedirectResult(auth)
+        .then((result) => {
+          if (result) {
+            // The user is signed in
+            //  const user = result.user
+            dispatch!({ type: 'AUTHENTICATE', payload: result.user })
+            //  console.log('Signed in user:', user)
+          } else {
+            // No user is signed in
+            console.log('No user signed in')
+          }
+        })
+        .catch((error) => {
+          // Handle any errors
+          console.error('Error retrieving redirect result:', error)
+        })
+      //
       toast('Login successful', { type: 'success' })
       navigate('/')
     } catch (error) {
