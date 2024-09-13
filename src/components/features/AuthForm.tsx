@@ -4,7 +4,8 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   GoogleAuthProvider,
-  signInWithPopup,
+  // signInWithPopup,
+  signInWithRedirect,
 } from 'firebase/auth'
 import { useAuth } from '../../context/authContext'
 import { auth } from '../../firebase/config'
@@ -43,9 +44,9 @@ const AuthForm = ({
     // const googleAuth = getAuth()
     try {
       const provider = new GoogleAuthProvider()
-      const result = await signInWithPopup(auth, provider)
+      const result = await signInWithRedirect(auth, provider)
       console.log(result)
-      dispatch!({ type: 'AUTHENTICATE', payload: result.user })
+      // dispatch!({ type: 'AUTHENTICATE', payload: result.user })
       toast('Login successful', { type: 'success' })
       navigate('/')
     } catch (error) {

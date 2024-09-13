@@ -12,9 +12,10 @@ import { AuthProvider } from './context/authContext.tsx'
 import RegisterPage from './pages/(auth)/register/index.tsx'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import Restaurants from './pages/Restaurants/Restaurants.tsx'
+// import Restaurants from './pages/Restaurants/Restaurants.tsx'
 import Hotels from './pages/search/Hotels.tsx'
 import Rentals from './pages/search/Rentals.tsx'
+import RestaurantResults from './pages/search/Restaurants.tsx'
 
 const ErrorBoundary = () => {
   return (
@@ -30,10 +31,7 @@ const router = createBrowserRouter([
     element: <HomePage />,
     errorElement: <ErrorBoundary />,
   },
-  {
-    path: 'restaurants',
-    element: <Restaurants />,
-  },
+
   {
     path: '/home',
     element: <Home />,
@@ -60,7 +58,14 @@ const router = createBrowserRouter([
     path: '/search/hotels',
     element: <Hotels />,
   },
-  { path: '/search/rentals', element: <Rentals /> },
+  {
+    path: '/search/rentals',
+    element: <Rentals />,
+  },
+  {
+    path: '/search/restaurants',
+    element: <RestaurantResults />,
+  },
 
   {
     path: '/about',
