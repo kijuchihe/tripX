@@ -4,9 +4,9 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   GoogleAuthProvider,
-  // signInWithPopup,
-  signInWithRedirect,
-  getRedirectResult,
+  signInWithPopup,
+  // signInWithRedirect,
+  // getRedirectResult,
 } from 'firebase/auth'
 import { useAuth } from '../../context/authContext'
 import { auth } from '../../firebase/config'
@@ -29,16 +29,16 @@ const AuthForm = ({
       navigate('/')
     }
 
-    getRedirectResult(auth)
-      .then((result) => {
-        if (result) {
-          dispatch!({ type: 'AUTHENTICATE', payload: result.user })
-          navigate('/')
-        }
-      })
-      .catch((error) => {
-        console.error('Error retrieving redirect result:', error)
-      })
+    // getRedirectResult(auth)
+    //   .then((result) => {
+    //     if (result) {
+    //       dispatch!({ type: 'AUTHENTICATE', payload: result.user })
+    //       navigate('/')
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.error('Error retrieving redirect result:', error)
+    //   })
   }, [])
   const checkValidFields = () => {
     if (!email) {
@@ -61,24 +61,8 @@ const AuthForm = ({
     // const googleAuth = getAuth()
     try {
       const provider = new GoogleAuthProvider()
-      await signInWithRedirect(auth, provider)
-      getRedirectResult(auth)
-        .then((result) => {
-          if (result) {
-            // The user is signed in
-            //  const user = result.user
-            dispatch!({ type: 'AUTHENTICATE', payload: result.user })
-            //  console.log('Signed in user:', user)
-          } else {
-            // No user is signed in
-            console.log('No user signed in')
-          }
-        })
-        .catch((error) => {
-          // Handle any errors
-          console.error('Error retrieving redirect result:', error)
-        })
-      //
+      const result = await signInWithPopup(auth, provider)
+      dispatch!({ type: 'AUTHENTICATE', payload: result.user })
       toast('Login successful', { type: 'success' })
       navigate('/')
     } catch (error) {

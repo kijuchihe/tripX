@@ -56,15 +56,6 @@ const HomePage = () => {
               className="object-cover bg-primary"
             />
           </div>
-          {/* <div className="xaFzM FjASD">
-            <img
-              src="https://static.tacdn.com/img2/trips/home-gai-entry-v2-mv.png"
-              width="100%"
-              height="100%"
-              alt=""
-              className="_C"
-            />
-          </div> */}
         </div>
       </Container>
       <Container>
